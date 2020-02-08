@@ -1,0 +1,40 @@
+.new1
+  .new1_header
+    .new1_header__title
+      = link_to 'memorandum',root_path
+      .new1_header__title__sub
+        〜美味しいもの食べたい〜
+  .new1_body
+    .new1_body_title
+      ユーザー情報入力 1/2
+    .new1_body_content
+      .new1_body_content-name
+        .new1_body_content-name-title
+          ・名前
+        .new1_body_content-name-field
+          = form_with model: @user, url:new2_signup_index_path, method: :get, local: true do |f|
+            = f.text_field :name, placeholder: "例)東京太郎", class: "content-field"
+            .new1_body_content-mail
+              .new1_body_content-mail-title
+                ・メールアドレス
+              .new1_body_content-mail-field
+            = f.email_field :email, placeholder: "例)aaa@bbb.ccc",class: "content-field"
+            .new1_body_content-pass
+              .new1_body_content-pass-title
+                ・パスワード
+              .new1_body_content-pass-field
+            = f.password_field :password, placeholder: "7文字以上の半角英数字", class: "content-field"
+            -# .new1_body_content-pass-message
+            -#   .new1_body_content-pass-message-checkbox
+            -#     =check_box_tag :check1
+            -#   .new1_body_content-pass-message-1
+            -#     パスワードを表示する
+            .new1_body_mainspace_content-next
+            = f.submit "次へ進む", class: "new1-btn"
+              
+  .new1_footer
+    .new1_footer__title
+      君がどんなものを食べているか言ってみなさい。
+      君がどんな人間であるか当ててみせよう。
+    .new1_footer__sub
+      ブリア=サヴァラン

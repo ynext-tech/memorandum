@@ -1,0 +1,111 @@
+.header
+  .header__title
+    = link_to 'memorandum', root_path
+    .header__title__sub
+      〜美味しいもの食べたい〜
+  .header__main
+    = link_to '新規投稿', new_shop_path
+  .header__rightbox
+    - if user_signed_in?
+      .header__rightbox__btn1
+        = current_user.name
+      .header__rightbox__btn4
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+    - else
+      .header__rightbox__btn2
+        = link_to '新規登録', new1_signup_index_path
+      .header__rightbox__btn3
+        = link_to 'ログイン', new_user_session_path
+
+
+.new
+  %section.contain
+    #shop__contain
+      %div
+        .shop__contain__inner
+          %h2.shop__head ~お店の情報を入力~
+          = form_with model: @shop, class: "shop__form" do |f|
+            .shop__content
+              .form__group
+                .form__group__head
+                  ・店名
+                %div
+                  = f.text_field :shop_name, class: "input__default", placeholder: "店名（必須 40文字まで)"
+              .form__group
+                .form__group__head
+                  ・お店の説明
+                = f.text_area :text, class: "textarea__default", placeholder: "お店の説明（必須 1,000文字以内）東京駅構内にあるラーメンストリートの中でもダントツの超人気店「六厘舎」。こちらの全国的にも有名な「つけ麺」の人気の秘密は飽きのこないコクと旨味。スープには魚粉とそぼろ肉が乗っていて、動物系と魚介系がどちらも強すぎず、しっかりとバランスが取れているため、食べやすいのが特徴です。", rows: "5"
+              .shop--upload__box
+                .shop--upload__head
+                  ・画像
+                .post__drop__box__contain
+                .prev-content
+                  -# - @item.images.each do |image|
+                    .preview-box
+                      .upper-box
+                        = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                      .lower-box
+                        .update-box
+                          %label.edit-btn 編集
+                        .delete-box
+                          .delete-btn
+                            %span 削除
+                .label-content
+                  -# = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+                    %pre.label-box__text-visible クリックしてファイルをアップロード
+                .hidden-content
+                  = f.fields_for :images do |i|
+                    = i.file_field :image, class: "hidden-field"
+                    = i.check_box:_destroy, class: "hidden-checkbox"
+                  -# - @item.images.length.upto(4) do |i|
+                    %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
+              .form__group
+                .form__group__head
+                  ・住所
+                %div
+                  = f.text_field :address, class: "input__default", placeholder: "例）東京都葛飾区・・・（必須)"
+              .form__group
+                .form__group__head
+                  ・電話番号
+                %div
+                  = f.text_field :phone, class: "input__default", placeholder: "電話番号（必須)"
+              .form__group
+                .form__group__head
+                  ・営業時間
+                %div
+                  = f.text_field :time, class: "input__default", placeholder: "例）18:00～23:00（L.O.22:30)（必須)"
+              .form__group
+                .form__group__head
+                  ・予算
+                %div
+                  = f.text_field :price, class: "input__default", placeholder: "例）夜 ～￥3000 　昼 ～￥999（必須)"
+              .form__group
+                .form__group__head
+                  ・食べログのURL
+                %div
+                  = f.text_field :taberogu, class: "input__default", placeholder: "URL（必須)"
+            
+              -# #image_box
+              -#   -# = @shop.images.each_with_index do |image, i|""
+              -#     = image_tag image.image.url, data: { index: i }, width: "80", height: '80'
+              -#   = f.fields_for :images do |i|
+              -#     = i.label :image, class: "shop--upload__drop__box" do
+              -#       .shop--upload__drop__box__imageview
+              -#         = i.file_field :image,rquired: true,class:"file",style:"display:none;"
+              -#         %pre
+              -#           #previews
+            
+            
+            .shop__content.shop__btn__box
+              =f.submit "投稿する", class: "btn--red"
+              = link_to 'もどる', root_path, class: "btn--gray"
+
+
+
+.footer
+  .footer__title
+    君がどんなものを食べているか言ってみなさい。
+    君がどんな人間であるか当ててみせよう。
+  .footer__sub
+    ブリア=サヴァラン

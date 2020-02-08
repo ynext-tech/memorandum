@@ -10,7 +10,6 @@
 |email|string|null: false|
 |password|string|null: false|
 |prefecture|integer|null: false|
-|phone|string|null: false|
 ### Association
 - has_many :shops
 

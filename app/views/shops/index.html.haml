@@ -1,12 +1,51 @@
 .header
   .header__title
-    memorandum
+    = link_to 'memorandum', root_path
+    .header__title__sub
+      〜美味しいもの食べたい〜
   .header__main
-    新規投稿
+    - if user_signed_in?
+      = link_to '新規投稿', new_shop_path
   .header__rightbox
-    .header__rightbox__btn1
-      username
-    .header__rightbox__btn2
-      新規登録
-    .header__rightbox__btn3
-      ログイン
+    - if user_signed_in?
+      .header__rightbox__btn1
+        = current_user.name
+      .header__rightbox__btn4
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+    - else
+      .header__rightbox__btn2
+        = link_to '新規登録', new1_signup_index_path
+      .header__rightbox__btn3
+        = link_to 'ログイン', new_user_session_path
+
+.main
+  .main__title
+    【東京のグルメマップ】
+  .main__text
+    観光や旅行地としても存在感を発揮している東京には、世界各国の多彩なグルメが集結しています。
+    %br各主要駅ごとに多くのレストランや飲食店があり、慣れない方はどれにしようか迷ってしまうほど。
+    %br
+    どこに行けば美味しいものが食べられるのか？
+    %br本記事ではそんな疑問にお答えしていきます。
+    %br
+    今回は安くて美味しいB級グルメから、話題のおしゃれなグルメまで、行って間違いなしの東京グルメスポットを厳選しました♪
+    %br東京の名物グルメ、観光とセットで寄りたいランチ、インスタ映えするお店、今人気の美味しい店など要チェックです！
+  .main__index
+    .main__index__name
+      -# = @shops.shop_name
+      つじ半
+    .main__index__address
+      -# = @shops.address
+      東京都中央区日本橋3-1-15 久栄ビル 1F
+    .main__index__image
+      -# = @shops.image
+      = image_tag(src = "sushi.jpg", class: "main__index__image-1")
+
+
+
+.footer
+  .footer__title
+    君がどんなものを食べているか言ってみなさい。
+    君がどんな人間であるか当ててみせよう。
+  .footer__sub
+    ブリア=サヴァラン

@@ -3,10 +3,90 @@
   width: 100%;
   background-color: antiquewhite;
   display: flex;
+  color: dimgray;
+  a {
+    text-decoration: none;
+    color: dimgray;
+  }
+  &__title {
+   
+    font-size: 30px;
+    padding-top: 10px;
+    padding-left: 40px;
+    &__sub {
+      font-size: 18px;
+      color: gray;
+    }
+  }
   &__main {
+    margin: 10px auto;
+    font-size: 30px;
+    padding: 20px;
+    height: 40px;
+    // background-color: green;
+    border-radius: 30px;
 
   }
   &__rightbox {
-    
+    margin-right: 30px;
+    display: flex;
+    font-size: 20px;
+    &__btn1, &__btn2, &__btn3, &__btn4 {
+      padding: 0 10px;
+      height: 35px;
+      // background-color: rgb(22, 169, 236);
+      border-radius: 10px;
+      margin: auto 10px;
+    }
   }
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-bottom: 50px;
+  &__title{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 30px;
+  }
+  &__text {
+    width: 70%;
+    height: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: gainsboro;
+    color: dimgray;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px 3px;
+
+  }
+  &__index {
+    margin: 60px auto;
+    height: 550px;
+    width: 550px;
+    &__name {
+      font-size: 30px;
+      padding-bottom: 10px;
+    }
+    &__address {
+      padding-bottom: 10px;
+      color: dimgray;
+    }
+    &__image {
+
+    }
+  }
+
+}
+
+.footer {
+  height: 80px;
+  width: 100%;
+  background-color: antiquewhite;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 10px;
+  color: dimgray;
 }

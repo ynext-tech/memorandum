@@ -1,0 +1,30 @@
+.new2
+  .new2_header
+    .new2_header__title
+      = link_to 'memorandum',root_path
+      .new2_header__title__sub
+        〜美味しいもの食べたい〜
+  .new2_body
+    .new2_body_title
+      ユーザー情報入力 2/2
+    .new2_body_content
+      .new2_body_content-prefecture
+        .new2_body_content-prefecture-title
+          ・都道府県
+        .new2_body_content-prefecture-field
+          = form_with model: @user, url:signup_index_path, method: :post, local: true do |f|
+            = f.collection_select :prefecture, Prefecture.all, :id, :name, {prompt: '---'}, {class: "select__default"}
+            .new2_body_content-city
+              .new2_body_content-city-title
+                ・市区町村
+              .new2_body_content-city-field
+            = f.text_field :city, placeholder: "例)渋谷区",class: "content-field"
+            .new2_body_mainspace_content-next
+            = f.submit "次へ進む", class: "new2-btn"
+              
+  .new2_footer
+    .new2_footer__title
+      君がどんなものを食べているか言ってみなさい。
+      君がどんな人間であるか当ててみせよう。
+    .new2_footer__sub
+      ブリア=サヴァラン

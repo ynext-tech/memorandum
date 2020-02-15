@@ -10,6 +10,8 @@
     background-color: antiquewhite;
     display: flex;
     color: dimgray;
+    position: fixed;
+    z-index: 1;
     a {
       text-decoration: none;
       color: dimgray;
@@ -36,7 +38,7 @@
       margin-right: 30px;
       display: flex;
       font-size: 20px;
-      &__btn1, &__btn2, &__btn3 {
+      &__btn1, &__btn2, &__btn3, &__btn4 {
         padding: 0 10px;
         height: 35px;
         // background-color: rgb(22, 169, 236);
@@ -48,6 +50,7 @@
 
 
   &_body {
+    padding-top: 100px;
     width: 800px;
     margin: 0 auto;
     &_main {
@@ -83,9 +86,6 @@
         margin-bottom: 10px;
       }
       &_map{
-          width: 400px;
-          height: 400px;
-          // background-color: blueviolet;
           margin-left: 50px;
         }
       a {
@@ -93,8 +93,32 @@
         text-decoration: none;
       }
 
+      &_bottom {
+        display: flex;
+        font-size: 20px;
+        &-edit, &-destroy {
+          text-align: center;
+          width: 30%;
+          background-color:#ea352d;
+          cursor: pointer;
+          border: 1px solid #ea352d;
+          padding: 10px 0;
+          margin: 50px 30px 10px 60px;
+          border-radius: 15px;
+          a {
+            color: #ffffff;
+          }
+        }
+
+      }
     }
   }
+
+  #map {
+    height: 400px;
+    width: 500px;
+  }
+
 
 
   &_footer {
@@ -107,3 +131,4 @@
     color: dimgray;
   }
 }
+

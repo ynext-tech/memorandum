@@ -2,10 +2,12 @@
   .header__title
     = link_to 'memorandum', root_path
     .header__title__sub
-      〜美味しいもの食べたい〜
+      = link_to '〜美味しいもの食べたい〜', root_path
   .header__main
     - if user_signed_in?
       = link_to '新規投稿', new_shop_path
+    - else 
+      = link_to '新規投稿', new0_signup_index_path
   .header__rightbox
     - if user_signed_in?
       .header__rightbox__btn1
@@ -31,17 +33,16 @@
     今回は安くて美味しいB級グルメから、話題のおしゃれなグルメまで、行って間違いなしの東京グルメスポットを厳選しました♪
     %br東京の名物グルメ、観光とセットで寄りたいランチ、インスタ映えするお店、今人気の美味しい店など要チェックです！
   .main__index
-    .main__index__name
-      -# = @shops.shop_name
-      つじ半
-    .main__index__address
-      -# = @shops.address
-      東京都中央区日本橋3-1-15 久栄ビル 1F
-    .main__index__image
-      -# = @shops.image
-      = image_tag(src = "sushi.jpg", class: "main__index__image-1")
-
-
+    - @shops.each do |shop|
+      = link_to "/shops/#{shop.id}" do
+        .main__index__name
+          = shop.shop_name
+          -# つじ半
+        .main__index__address
+          = shop.address
+          -# 東京都中央区日本橋3-1-15 久栄ビル 1F
+        .main__index__image
+          = image_tag(shop.images.first.image.url, class: "main__index__image-1")
 
 .footer
   .footer__title

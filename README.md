@@ -19,6 +19,8 @@
 |shop_name|string|null: false|
 |text|text|null: false|
 |address|string|null: false|
+|latitude|float|null: false|
+|longitude|float|null: false|
 |phone|integer|null: false|
 |time|string|
 |price|string|

@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: memorandum_production
-  username: memorandum
-  password: <%= ENV['MEMORANDUM_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

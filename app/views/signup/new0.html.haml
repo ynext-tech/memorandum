@@ -1,0 +1,23 @@
+.new0
+  .new0_header
+    .new0_header__title
+      = link_to 'memorandum',root_path
+      .new0_header__title__sub
+        = link_to '〜美味しいもの食べたい〜', root_path
+  .new0_body
+    .new0_body_title
+      新規登録orログイン
+    .new0_body_content
+      .new0_body_content_title
+        新規投稿するには新規登録orログインして下さい
+      .new0_body_content_new
+        = link_to "新規登録はこちら", new1_signup_index_path, class: "new0-btn"
+      .new0_body_content_login
+        = link_to "ログインはこちら", new_user_session_path, class: "new0-btn"
+
+  .new0_footer
+    .new0_footer__title
+      君がどんなものを食べているか言ってみなさい。
+      君がどんな人間であるか当ててみせよう。
+    .new0_footer__sub
+      ブリア=サヴァラン

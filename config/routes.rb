@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'shops#index'
   resources :signup do
     collection do
-      get :new1, :new2, :new3
+      get :new0, :new1, :new2, :new3
     end
   end
 

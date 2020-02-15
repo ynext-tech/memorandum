@@ -1,32 +1,29 @@
-.header
-  .header__title
-    = link_to 'memorandum', root_path
-    .header__title__sub
-      〜美味しいもの食べたい〜
+.login
+  .login_header
+    .login_header__title
+      = link_to 'memorandum', root_path
+      .login_header__title__sub
+        = link_to '〜美味しいもの食べたい〜', root_path
 
-.container
-  %h2.head Log in
-  = form_for(resource, as: resource_name, url: new_user_session_path) do |f|
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "box", placeholder: "例)aa@aaaa"
-    .field
-      = f.label :password
-      %br/
-      = f.password_field :password, autocomplete: "current-password", class: "box", placeholder: "例)aaaaaaaa"
-    - if devise_mapping.rememberable?
+  .login_container
+    %h2.head Log in
+    = form_for(resource, as: resource_name, url: new_user_session_path) do |f|
       .field
-        = f.check_box :remember_me
-        = f.label :remember_me
-    .actions
-      = f.submit "Log in", class: "login_btn"
-  = render "devise/shared/links"
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "box", placeholder: "例)aa@aaaa"
+      .field
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "current-password", class: "box", placeholder: "例)aaaaaaaa"
+      
+      .actions
+        = f.submit "Log in", class: "login_btn"
 
 
-.footer
-  .footer__title
-    君がどんなものを食べているか言ってみなさい。
-    君がどんな人間であるか当ててみせよう。
-  .footer__sub
-    ブリア=サヴァラン
+  .login_footer
+    .login_footer__title
+      君がどんなものを食べているか言ってみなさい。
+      君がどんな人間であるか当ててみせよう。
+    .login_footer__sub
+      ブリア=サヴァラン

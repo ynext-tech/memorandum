@@ -3,10 +3,12 @@
     .show_header__title
       = link_to 'memorandum', root_path
       .show_header__title__sub
-        〜美味しいもの食べたい〜
+        = link_to '〜美味しいもの食べたい〜', root_path
     .show_header__main
       - if user_signed_in?
         = link_to '新規投稿', new_shop_path
+      - else 
+        = link_to '新規投稿', new0_signup_index_path
     .header__rightbox
       - if user_signed_in?
         .header__rightbox__btn1
@@ -22,40 +24,72 @@
   .show_body
     .show_body_main
       .show_body_main_image
-        = image_tag(src = "sushi.jpg", class: "show_body_main_image-1")
+        = image_tag(@shop.images.first.image.url, class: "show_body_main_image-1")
       .show_body_main_shop_name
-        つじ半
+        = @shop.shop_name
       .show_body_main_text
-        日本橋「つじ半」のランチは「贅沢丼（松・竹・梅（イクラやウニ、カニ付き）」の三種のみ。
-        生マグロ・中落ち・イカ・ボタンエビ・数の子・イクラ・キュウリ・ミル貝・ツブ貝の9種の具材がこんもりと、大葉、刻みネギ、焼海苔、煎りゴマの混ざった温かい白飯に柱を作っています。
+        = @shop.text
       .show_body_main_phone
         .show_body_main_phone-top
           電話番号 ：
         .show_body_main_phone-main
-          03-6262-0823
+          = @shop.phone
       .show_body_main_time
         .show_body_main_time-top
           営業時間 ：
         .show_body_main_time-main
-          [月～金]11:00～21:00(L.O)[土・日・祝]11:00～21:00(L.O)
+          = @shop.time
       .show_body_main_price
         .show_body_main_price-top
           予算 ：
         .show_body_main_price-main
-          ～￥2000
+          = @shop.price
       .show_body_main_taberogu
-        = link_to "食べログ"
+        = link_to "食べログ", "#{@shop.taberogu}"
       .show_body_main_address
         .show_body_main_address-top
           住所 ：
         .show_body_main_address-main
-          東京都中央区日本橋3-1-15 久栄ビル 1F
+          = @shop.address
       .show_body_main_map
-        -# %iframe(src="https://goo.gl/maps/6CzW6YwtpRzUiUbu7")
-        %iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.848129104535!2d139.7693963149031!3d35.68074133760698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfd0d57e253%3A0x211fa4fa71a7c61e!2z44Gk44GY5Y2KIOaXpeacrOapi-W6lw!5e0!3m2!1sja!2sjp!4v1581096177242!5m2!1sja!2sjp" width="500" height="400" frameborder="0" style="border:0;" allowfullscreen)
- 
+        #map
+        :javascript
+            function initMap() {
 
+                var test ={lat: #{@shop.latitude}, lng: #{@shop.longitude}};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15,
+                    center: test
+                });
+                var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
 
+                var contentString = '住所： #{@shop.address}';
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                    position:test,
+                    map: map,
+                    title: contentString
+                });
+
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+            }
+        %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDA_oTvNoFIB9f3nEA8liek0AF62zcxz24&callback=initMap"}
+
+      .show_body_main_bottom
+        -if user_signed_in? && current_user.id == @shop.user_id
+          .show_body_main_bottom-edit
+            = link_to 'お店の情報 編集', edit_shop_path(@shop.id), method: :get
+          .show_body_main_bottom-destroy
+            = link_to 'お店の情報 削除', shop_path(@shop.id), method: :delete
+
+        
+        
   .show_footer
     .show_footer__title
       君がどんなものを食べているか言ってみなさい。

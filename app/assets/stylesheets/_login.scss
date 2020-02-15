@@ -1,42 +1,100 @@
-.container {
-  width: 700px;
+.login {
   height: 100%;
-  text-align: center;
-  margin: 40px auto;
-  border: solid 5px;
-  border-radius: 50px;
-  padding: 40px 0;
-}
-.head {
-  font-size: 30px;
-  padding-bottom: 20px;
-  border-bottom: thin solid whitesmoke;
+  width: 100vw;
+  background-color: rgb(245, 245, 245);
+  overflow: scroll;
+  &_header {
+    height: 100px;
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    a {
+      text-decoration: none;
+      color: dimgray;
+    }
+    &__title {
+      font-size: 30px;
+      padding-top: 10px;
+      padding-left: 40px;
+      &__sub {
+        font-size: 18px;
+        color: gray;
+      }
+    }
+    &__main {
+      margin: 10px auto;
+      font-size: 30px;
+      padding: 20px;
+      height: 40px;
+      // background-color: green;
+      border-radius: 30px;
+  
+    }
+    &__rightbox {
+      margin-right: 30px;
+      display: flex;
+      font-size: 20px;
+      &__btn1, &__btn2, &__btn3, &__btn4 {
+        padding: 0 10px;
+        height: 35px;
+        // background-color: rgb(22, 169, 236);
+        border-radius: 10px;
+        margin: auto 10px;
+      }
+    }
+  }
+
+  &_container {
+    width: 700px;
+    height: 100%;
+    text-align: center;
+    margin: 20px auto;
+    border: solid 5px;
+    border-radius: 50px;
+    padding: 50px 0;
+    background-color: white;
+  }
+  .head {
+    font-size: 30px;
+    padding-bottom: 20px;
+    border-bottom: thin solid whitesmoke;
+  }
+
+  .field {
+    font-size: 22px;
+    padding-top: 10px;
+  }
+
+  .box {
+    width: 70%;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 10px;
+  }
+  .actions {
+    font-size: 20px;
+  }
+  .login_btn {
+    width: 70%;
+    background-color:#ea352d;
+    cursor: pointer;
+    border: 1px solid #ea352d;
+    padding: 10px 0;
+    margin: 30px 0 10px 0;
+    color: #ffffff;
+    border-radius: 15px;
+  }
+  &_footer {
+    height: 80px;
+    width: 100%;
+    background-color: antiquewhite;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    color: dimgray;
+  }
 }
 
-.field {
-  font-size: 22px;
-  padding-top: 10px;
-}
-
-.box {
-  width: 70%;
-  height: 40px;
-  border-radius: 5px;
-  padding-left: 10px;
-}
-.actions {
-  font-size: 20px;
-}
-.login_btn {
-  width: 70%;
-  background-color:#ea352d;
-  cursor: pointer;
-  border: 1px solid #ea352d;
-  padding: 10px 0;
-  margin: 30px 0 10px 0;
-  color: #ffffff;
-  border-radius: 15px;
-}
 a {
   text-decoration: none;
   color: black;

@@ -73,3 +73,7 @@ gem 'http'
 gem 'geocoder'
 gem 'jquery-rails'
 gem 'gmaps4rails'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end

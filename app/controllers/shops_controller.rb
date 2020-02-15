@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   def index
-    @shops = Shop.all.includes(:images).order('created_at ASC')
+    @shops = Shop.all.includes(:images).order('created_at desc')
     # @shop = Shop.includes(:images).order('created_at ASC')
     # @image = Image.all
   end

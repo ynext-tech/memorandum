@@ -25,7 +25,6 @@
     font-size: 30px;
     padding: 20px;
     height: 40px;
-    // background-color: green;
     border-radius: 30px;
 
   }
@@ -36,7 +35,6 @@
     &__btn1, &__btn2, &__btn3, &__btn4 {
       padding: 0 10px;
       height: 35px;
-      // background-color: rgb(22, 169, 236);
       border-radius: 10px;
       margin: auto 10px;
     }
@@ -55,7 +53,7 @@
     font-size: 30px;
   }
   &__text {
-    width: 70%;
+    width: 60%;
     // height: 100%;
     margin: 10px auto;
     padding: 20px;
@@ -66,15 +64,16 @@
 
   }
   &__index {
+    overflow-x: scroll;
     display: flex;
     margin: 60px;
-    height: 550px;
-    width: 550px;
+    height: 100%;
+    width: 100%;
     margin-left: 100px;
     a {
       padding-left: 100px;
     }
-    &__name {
+    &__shop_name {
       font-size: 30px;
       padding-bottom: 10px;
     }
@@ -87,6 +86,10 @@
       height: 480px;
       width: 480px;
       }
+    }
+    &__name {
+      color: dimgray;
+      text-align: right;
     }
   }
 

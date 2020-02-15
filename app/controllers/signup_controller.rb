@@ -29,13 +29,11 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to new3_signup_index_path
     else
-      render '/signup/registration'
+      render 'new1'
     end
   end
 
   def new3
-    # session[:prefecture] = user_params[:prefecture]
-    # session[:city] = user_params[:city]
     sign_in User.find(session[:id]) unless user_signed_in?
   end
 

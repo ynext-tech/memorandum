@@ -1,4 +1,11 @@
 class Shop < ApplicationRecord
+  validates_associated :images
+  validates :images, presence: true
+  validates :shop_name, presence: true
+  validates :text, presence: true
+  validates :address, presence: true
+  validates :phone, presence: true
+
   # after_validation :geocode
 
   # private
